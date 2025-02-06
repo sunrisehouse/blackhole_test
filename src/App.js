@@ -2,11 +2,7 @@ import { useEffect, useReducer, useState } from 'react';
 import './App.css';
 import { AppBar, Box, Button, Container, Drawer, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Toolbar, Typography } from '@mui/material';
 // import { CircularBuffer } from './circulate-buffer';
-<<<<<<< HEAD
 import { initAudio, initGyroscope } from './sensors';
-=======
-import { initAccelerometer, initAudio, initGyroscope } from './sensors';
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
 import { EventDetector } from './event-detector';
 import SensorsIcon from '@mui/icons-material/Sensors';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
@@ -21,11 +17,7 @@ import { SettingsView } from './SettingsView';
 // 기존 코드 유지
 
 
-<<<<<<< HEAD
 const APP_VERSION = 'v0.0.17';
-=======
-const APP_VERSION = 'v0.0.16';
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
 
 // const audioBuffer = new CircularBuffer(10000000);
 // const accelBuffer = new CircularBuffer(10000000);
@@ -98,7 +90,6 @@ function App() {
   const initialSettings = JSON.parse(localStorage.getItem('settings')) || {
     INITIALIZE_TIME: 5000,
     TR_WAITING: 3000,
-<<<<<<< HEAD
     TS1_CONDITION_MIN_VALUE: 0.3,
     TS2_CONDITION_MIN_VALUE: 0.5,
     // TL_CONDITION_UP_VALUE: 10.2,
@@ -113,22 +104,6 @@ function App() {
     clCoff: 0.0,
     anrCoff: 4.8075,
     bnrCoff: -1.573,
-=======
-    TS1_CONDITION_MIN_VALUE: 0.4,
-    TS2_CONDITION_MIN_VALUE: 0.7,
-    TL_CONDITION_UP_VALUE: 10.2,
-    TL_CONDITION_DOWN_VALUE: 9.4,
-    TR_CONDITION_MIN_VALUE: 0.2,
-    TS2_CONDITION_MAX_TIME: 2000,
-    TS2_CONDITION_MIN_TIME: 200,
-    TR_CONDITION_MAX_TIME: 70,
-    TL_CONDITION_MAX_TIME: 70,
-    alCoff: 4.5741,
-    blCoff: -1.336,
-    clCoff: 0.0,
-    anrCoff: 2.7543,
-    bnrCoff: -1.513,
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
     cnrCoff: -0.1557,
     userParameter: 0.65,
     unit: 'm',
@@ -144,7 +119,6 @@ function App() {
     TR_WAITING: settings.TR_WAITING, 
     TS1_CONDITION_MIN_VALUE: settings.TS1_CONDITION_MIN_VALUE,
     TS2_CONDITION_MIN_VALUE: settings.TS2_CONDITION_MIN_VALUE,
-<<<<<<< HEAD
     // TL_CONDITION_UP_VALUE: settings.TL_CONDITION_UP_VALUE,
     // TL_CONDITION_DOWN_VALUE: settings.TL_CONDITION_DOWN_VALUE,
     // TR_CONDITION_MIN_VALUE: settings.TR_CONDITION_MIN_VALUE,
@@ -152,15 +126,6 @@ function App() {
     TS2_CONDITION_MIN_TIME: settings.TS2_CONDITION_MIN_TIME,
     // TR_CONDITION_MAX_TIME: settings.TR_CONDITION_MAX_TIME,
     // TL_CONDITION_MAX_TIME: settings.TL_CONDITION_MAX_TIME,
-=======
-    TL_CONDITION_UP_VALUE: settings.TL_CONDITION_UP_VALUE,
-    TL_CONDITION_DOWN_VALUE: settings.TL_CONDITION_DOWN_VALUE,
-    TR_CONDITION_MIN_VALUE: settings.TR_CONDITION_MIN_VALUE,
-    TS2_CONDITION_MAX_TIME: settings.TS2_CONDITION_MAX_TIME,
-    TS2_CONDITION_MIN_TIME: settings.TS2_CONDITION_MIN_TIME,
-    TR_CONDITION_MAX_TIME: settings.TR_CONDITION_MAX_TIME,
-    TL_CONDITION_MAX_TIME: settings.TL_CONDITION_MAX_TIME,
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
   });
 
   useEffect(() => {
@@ -199,11 +164,7 @@ function App() {
                 finalVal,
                 laserVal,
                 resultVal,
-<<<<<<< HEAD
                 time: event.ts2Time - startTime,
-=======
-                time: event.trTime - startTime,
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
                 timeDelta,
               };
             });
@@ -223,7 +184,6 @@ function App() {
       });
       audioContext = ac;
     }
-<<<<<<< HEAD
     // async function initAccel() {
     //   const { accelerometer: accel } = await initAccelerometer((data) => {
     //     // accelBuffer.add(data);
@@ -231,15 +191,6 @@ function App() {
     //   });
     //   accelerometer = accel;
     // }
-=======
-    async function initAccel() {
-      const { accelerometer: accel } = await initAccelerometer((data) => {
-        // accelBuffer.add(data);
-        detector.inputAccelData(data)
-      });
-      accelerometer = accel;
-    }
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
     async function initGyro() {
       const { gyroscope: gyro } = await initGyroscope((data) => {
         // gyroBuffer.add(data);
@@ -248,11 +199,7 @@ function App() {
       gyroscope = gyro;
     }
     initAC();
-<<<<<<< HEAD
     // initAccel();
-=======
-    initAccel();
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
     initGyro();
     setTimeout(() => {
       detector.start();
@@ -280,7 +227,6 @@ function App() {
     TR_WAITING,
     TS1_CONDITION_MIN_VALUE,
     TS2_CONDITION_MIN_VALUE,
-<<<<<<< HEAD
     // TL_CONDITION_UP_VALUE,
     // TL_CONDITION_DOWN_VALUE,
     // TR_CONDITION_MIN_VALUE,
@@ -288,15 +234,6 @@ function App() {
     TS2_CONDITION_MIN_TIME,
     // TR_CONDITION_MAX_TIME,
     // TL_CONDITION_MAX_TIME,
-=======
-    TL_CONDITION_UP_VALUE,
-    TL_CONDITION_DOWN_VALUE,
-    TR_CONDITION_MIN_VALUE,
-    TS2_CONDITION_MAX_TIME,
-    TS2_CONDITION_MIN_TIME,
-    TR_CONDITION_MAX_TIME,
-    TL_CONDITION_MAX_TIME,
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
      alCoff, blCoff, clCoff, anrCoff, bnrCoff, cnrCoff, userParameter,
     unit, mPerM, ftPerM, mPerSteps, ftPerSteps,
   }) => {
@@ -306,7 +243,6 @@ function App() {
         TR_WAITING: Number(TR_WAITING),
         TS1_CONDITION_MIN_VALUE: Number(TS1_CONDITION_MIN_VALUE),
         TS2_CONDITION_MIN_VALUE: Number(TS2_CONDITION_MIN_VALUE),
-<<<<<<< HEAD
         // TL_CONDITION_UP_VALUE: Number(TL_CONDITION_UP_VALUE),
         // TL_CONDITION_DOWN_VALUE: Number(TL_CONDITION_DOWN_VALUE),
         // TR_CONDITION_MIN_VALUE: Number(TR_CONDITION_MIN_VALUE),
@@ -314,15 +250,6 @@ function App() {
         TS2_CONDITION_MIN_TIME: Number(TS2_CONDITION_MIN_TIME),
         // TR_CONDITION_MAX_TIME: Number(TR_CONDITION_MAX_TIME),
         // TL_CONDITION_MAX_TIME: Number(TL_CONDITION_MAX_TIME),
-=======
-        TL_CONDITION_UP_VALUE: Number(TL_CONDITION_UP_VALUE),
-        TL_CONDITION_DOWN_VALUE: Number(TL_CONDITION_DOWN_VALUE),
-        TR_CONDITION_MIN_VALUE: Number(TR_CONDITION_MIN_VALUE),
-        TS2_CONDITION_MAX_TIME: Number(TS2_CONDITION_MAX_TIME),
-        TS2_CONDITION_MIN_TIME: Number(TS2_CONDITION_MIN_TIME),
-        TR_CONDITION_MAX_TIME: Number(TR_CONDITION_MAX_TIME),
-        TL_CONDITION_MAX_TIME: Number(TL_CONDITION_MAX_TIME),
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
         alCoff: Number(alCoff),
         blCoff: Number(blCoff),
         clCoff: Number(clCoff),

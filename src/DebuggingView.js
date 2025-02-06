@@ -44,15 +44,9 @@ export function DebuggingView({
                   <TableCell align="right">ts2 flag</TableCell>
                   <TableCell align="right">ts2 time</TableCell>
                   <TableCell align="right">ts2 sample</TableCell>
-<<<<<<< HEAD
                   {/* <TableCell align="right">tr flag</TableCell>
                   <TableCell align="right">tr time</TableCell>
                   <TableCell align="right">tr sample</TableCell> */}
-=======
-                  <TableCell align="right">tr flag</TableCell>
-                  <TableCell align="right">tr time</TableCell>
-                  <TableCell align="right">tr sample</TableCell>
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -71,17 +65,10 @@ export function DebuggingView({
                     <TableCell align="right">{log.value.ts1.sample}</TableCell>
                     <TableCell align="right">{log.value.ts2.flag ? 'true' : 'false'}</TableCell>
                     <TableCell align="right">{log.value.ts2.time - startTime}</TableCell>
-<<<<<<< HEAD
                     <TableCell align="right">{log.value.ts2.a}</TableCell>
                     {/* <TableCell align="right">{log.value.tr.flag ? 'true' : 'false'}</TableCell>
                     <TableCell align="right">{log.value.tr.time - startTime}</TableCell>
                     <TableCell align="right">{log.value.tr.a}</TableCell> */}
-=======
-                    <TableCell align="right">{log.value.ts2.sample}</TableCell>
-                    <TableCell align="right">{log.value.tr.flag ? 'true' : 'false'}</TableCell>
-                    <TableCell align="right">{log.value.tr.time - startTime}</TableCell>
-                    <TableCell align="right">{log.value.tr.a}</TableCell>
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
                   </TableRow>
                 ))}
               </TableBody>

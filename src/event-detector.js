@@ -6,7 +6,6 @@ import { addConsoleLog } from "./consolelog";
 
 
 export class EventDetector {
-<<<<<<< HEAD
   constructor({TR_WAITING,
       TS1_CONDITION_MIN_VALUE,
       TS2_CONDITION_MIN_VALUE,
@@ -18,15 +17,11 @@ export class EventDetector {
       //  TR_CONDITION_MAX_TIME, 
       //  TL_CONDITION_MAX_TIME
       }) {
-=======
-  constructor({TR_WAITING, TS1_CONDITION_MIN_VALUE, TS2_CONDITION_MIN_VALUE, TL_CONDITION_UP_VALUE, TL_CONDITION_DOWN_VALUE, TR_CONDITION_MIN_VALUE, TS2_CONDITION_MAX_TIME, TS2_CONDITION_MIN_TIME, TR_CONDITION_MAX_TIME, TL_CONDITION_MAX_TIME}) {
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
     this.isOn = false;
 
     this.TR_WAITING = TR_WAITING
     this.TS1_CONDITION_MIN_VALUE = TS1_CONDITION_MIN_VALUE
     this.TS2_CONDITION_MIN_VALUE = TS2_CONDITION_MIN_VALUE
-<<<<<<< HEAD
     // this.TL_CONDITION_UP_VALUE = TL_CONDITION_UP_VALUE
     // this.TL_CONDITION_DOWN_VALUE = TL_CONDITION_DOWN_VALUE
     // this.TR_CONDITION_MIN_VALUE = TR_CONDITION_MIN_VALUE
@@ -34,15 +29,6 @@ export class EventDetector {
     this.TS2_CONDITION_MIN_TIME = TS2_CONDITION_MIN_TIME
     // this.TR_CONDITION_MAX_TIME = TR_CONDITION_MAX_TIME
     // this.TL_CONDITION_MAX_TIME = TL_CONDITION_MAX_TIME
-=======
-    this.TL_CONDITION_UP_VALUE = TL_CONDITION_UP_VALUE
-    this.TL_CONDITION_DOWN_VALUE = TL_CONDITION_DOWN_VALUE
-    this.TR_CONDITION_MIN_VALUE = TR_CONDITION_MIN_VALUE
-    this.TS2_CONDITION_MAX_TIME = TS2_CONDITION_MAX_TIME
-    this.TS2_CONDITION_MIN_TIME = TS2_CONDITION_MIN_TIME
-    this.TR_CONDITION_MAX_TIME = TR_CONDITION_MAX_TIME
-    this.TL_CONDITION_MAX_TIME = TL_CONDITION_MAX_TIME
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
 
     this.eventDataList = []; // 이벤트 데이터를 리스트로 저장
     this.flagChangeLog = []; // 플래그 변경 이력을 저장
@@ -53,7 +39,6 @@ export class EventDetector {
   initializeState() {
     this.flagTs1 = false; // 첫 번째 소리 조건 (기존 flagTr1)
     this.flagTs2 = false; // 두 번째 소리 조건 (기존 flagTr2)
-<<<<<<< HEAD
     // this.flagTr = false;
 
     this.soundTs1Sample = null;
@@ -61,15 +46,6 @@ export class EventDetector {
     // this.soundTs2Sample = null;
     // this.soundTs2Time = null; // flagTs2가 트리거된 시간을 기록
     this.ts2Event = {
-=======
-    this.flagTr = false;
-
-    this.soundTs1Sample = null;
-    this.soundTs1Time = null;
-    this.soundTs2Sample = null;
-    this.soundTs2Time = null; // flagTs2가 트리거된 시간을 기록
-    this.trEvent = {
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
       time: null,
       value: null,
     };
@@ -90,19 +66,11 @@ export class EventDetector {
       flag: flagName,
       value: {
         ts1: { flag: this.flagTs1, time: this.soundTs1Time, sample: this.soundTs1Sample, },
-<<<<<<< HEAD
         // ts2: { flag: this.flagTs2, time: this.soundTs2Time, sample: this.soundTs2Sample, },
         ts2: {
           flag: this.flagTs2,
           time: this.ts2Event.time,
           a: this.ts2Event.value,
-=======
-        ts2: { flag: this.flagTs2, time: this.soundTs2Time, sample: this.soundTs2Sample, },
-        tr: {
-          flag: this.flagTr,
-          time: this.trEvent.time,
-          a: this.trEvent.value,
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
         },
       },
       time: t,
@@ -116,7 +84,6 @@ export class EventDetector {
   // Sound 데이터 입력
   inputSoundData({ samples, t }) {
     if (this.isOn) {
-<<<<<<< HEAD
       if (this.flagTs2) {
         const timeDiff = t - this.ts2Event.time;
         if (timeDiff > this.TR_WAITING) {
@@ -129,20 +96,6 @@ export class EventDetector {
       if (!this.flagTs2) {
         if (!this.flagTs1) {
           // 0.3 이상의 값이 있는지 확인하여 flagTs1 설정
-=======
-      if (this.flagTr) {
-        const timeDiff = t - this.trEvent.time;
-        if (timeDiff > this.TR_WAITING) {
-          this.flagTr = false;
-          this.trEvent.time = null;
-          this.trEvent.value = null;
-          this.logFlagChange('flagTr', false, t, 'flagTr false 로 바꿈', '');
-        }
-      }
-      if (!this.flagTr) {
-        if (!this.flagTs1) {
-          // 0.4 이상의 값이 있는지 확인하여 flagTs1 설정
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
           if (samples.some(sample => sample >= this.TS1_CONDITION_MIN_VALUE)) {
             this.flagTs1 = true;
             this.soundTs1Sample = samples.find(sample => sample >= this.TS1_CONDITION_MIN_VALUE);
@@ -151,7 +104,6 @@ export class EventDetector {
           }
         } 
         // flagTs1이 설정된 후 100ms ~ 2000ms 사이에 flagTs2 조건 확인
-<<<<<<< HEAD
         // else if (this.flagTs1 && !this.flagTs2) {
         //   const timeDiff = t - this.soundTs1Time;
     
@@ -169,25 +121,6 @@ export class EventDetector {
         //     }
         //   }
         // }
-=======
-        else if (this.flagTs1 && !this.flagTs2) {
-          const timeDiff = t - this.soundTs1Time;
-    
-          // 2000 milliseconds가 지났으면 flagTs1을 false로 재설정
-          if (timeDiff > this.TS2_CONDITION_MAX_TIME) {
-            this.resetFlags(t, `Resetting flagTs1 and flagTs2 after 2000ms timeout.`);
-          } 
-          // 100ms ~ 2000ms 사이에 flagTs2 조건 확인
-          else if (timeDiff >= this.TS2_CONDITION_MIN_TIME && timeDiff <= this.TS2_CONDITION_MAX_TIME) {
-            if (samples.some(sample => sample >= this.TS2_CONDITION_MIN_VALUE)) {
-              this.flagTs2 = true;
-              this.soundTs2Sample = samples.find(sample => sample >= this.TS2_CONDITION_MIN_VALUE);
-              this.soundTs2Time = t; // flagTs2가 트리거된 시간 기록
-              this.logFlagChange('flagTs2', true, t, `flagTs1=true 일 때 100 ~ 2000 사이에 ${this.TS2_CONDITION_MIN_VALUE} 이상의 sample 발견`, '2차 소리 감지');
-            }
-          }
-        }
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
       }
     }
   }
@@ -195,7 +128,6 @@ export class EventDetector {
   // 각속도 데이터 입력
   inputGyroData({ a, t }) {
     if (this.isOn) {
-<<<<<<< HEAD
       if (this.flagTs2) {
         const timeDiff = t - this.ts2Event.time;
         if (timeDiff > this.TR_WAITING) {
@@ -234,50 +166,11 @@ export class EventDetector {
           //   this.flagTs2 = false;
           //   this.logFlagChange('flagTs2', false, t, `Resetting flagTs2 after 70ms timeout with no sufficient acceleration.`, '');
           // }
-=======
-      if (this.flagTr) {
-        const timeDiff = t - this.trEvent.time;
-        if (timeDiff > this.TR_WAITING) {
-          this.flagTr = false;
-          this.trEvent.time = null;
-          this.trEvent.value = null;
-          this.logFlagChange('flagTr', false, t, 'flagTr false 로 바꿈', '');
-        }
-      }
-      if (!this.flagTr) {
-        if (this.flagTs2) {
-          const timeSinceFlagTs2 = t - this.soundTs2Time; // flagTs2가 트리거된 시간과 비교
-    
-          // flagTs2가 설정된 후 70ms 이내에 각속도 값이 0.2 이상이어야 함
-          if (timeSinceFlagTs2 <= this.TR_CONDITION_MAX_TIME) {
-            if (a >= this.TR_CONDITION_MIN_VALUE) {
-              this.flagTr = true;
-              this.trEvent.time = t;
-              this.trEvent.value = a;
-              const eventData = {
-                ts1Sample: this.soundTs1Sample,
-                ts1Time: this.soundTs1Time,
-                ts2Sample: this.soundTs2Sample,
-                ts2Time: this.soundTs2Time,
-                trGyro: a,
-                trTime: t,
-              };
-              // 이벤트 데이터를 리스트에 저장
-              this.eventDataList.push(eventData);
-              this.logFlagChange('flagTr', a, t, `Event detected at time ${t}, gyro: ${a}`, '각속도 감지');
-            }
-          } else {
-            // 70ms가 경과하면 flagTs2를 false로 설정
-            this.flagTs2 = false;
-            this.logFlagChange('flagTs2', false, t, `Resetting flagTs2 after 70ms timeout with no sufficient acceleration.`, '');
-          }
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
         }
       }
     }
   }
 
-<<<<<<< HEAD
   // inputAccelData({ a, t }) {
   //   if (this.isOn) {
   //     if (this.flagTr) {
@@ -320,50 +213,6 @@ export class EventDetector {
   //     }
   //   }
   // }
-=======
-  inputAccelData({ a, t }) {
-    if (this.isOn) {
-      if (this.flagTr) {
-        const timeDiff = t - this.trEvent.time;
-        if (timeDiff > this.TR_WAITING) {
-          this.flagTr = false;
-          this.trEvent.time = null;
-          this.trEvent.value = null;
-          this.logFlagChange('flagTr', false, t, 'flagTr false 로 바꿈', '');
-        }
-      }
-      if (!this.flagTr) {
-        if (this.flagTs2) {
-          const timeSinceFlagTs2 = t - this.soundTs2Time; // flagTs2가 트리거된 시간과 비교
-    
-          // flagTs2가 설정된 후 70ms 이내에 가속도 값이 10.2 이상 또는 9.4이하여야 함
-          if (timeSinceFlagTs2 <= this.TL_CONDITION_MAX_TIME) {
-            if (a >= this.TL_CONDITION_UP_VALUE || a <= this.TL_CONDITION_DOWN_VALUE) {
-              this.flagTr = true;
-              this.trEvent.time = t;
-              this.trEvent.value = a;
-              const eventData = {
-                ts1Sample: this.soundTs1Sample,
-                ts1Time: this.soundTs1Time,
-                ts2Sample: this.soundTs2Sample,
-                ts2Time: this.soundTs2Time,
-                trAccel: a,
-                trTime: t,
-              };
-              // 이벤트 데이터를 리스트에 저장
-              this.eventDataList.push(eventData);
-              this.logFlagChange('flagTr', a, t, `Event detected at time ${t}, accel: ${a}`, '가속도 감지');
-            }
-          } else {
-            // 70ms가 경과하면 flagTs2를 false로 설정
-            this.flagTs2 = false;
-            this.logFlagChange('flagTs2', false, t, `Resetting flagTs2 after 70ms timeout with no sufficient acceleration.`, '');
-          }
-        }
-      }
-    }
-  }
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
 
 
   // 플래그 초기화
@@ -372,13 +221,8 @@ export class EventDetector {
     this.flagTs2 = false;
     this.soundTs1Sample = null;
     this.soundTs1Time = null;
-<<<<<<< HEAD
     // this.soundTs2Sample = null;
     // this.soundTs2Time = null;
-=======
-    this.soundTs2Sample = null;
-    this.soundTs2Time = null;
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
     this.logFlagChange('flagTs1', false, t, message, '');
     this.logFlagChange('flagTs2', false, t, message, '');
   }

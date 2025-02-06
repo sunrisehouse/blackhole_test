@@ -81,11 +81,7 @@ export function SettingsView({
       </div>
       <div>
         <TextField
-<<<<<<< HEAD
           label="Gyro_threshold(ts2)"
-=======
-          label="Sound_threshold(ts2)"
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
           name="TS2_CONDITION_MIN_VALUE"
           type="number"
           size="small"
@@ -93,11 +89,7 @@ export function SettingsView({
           onChange={handleParametersChange}
         />
       </div>
-<<<<<<< HEAD
       {/* <div>
-=======
-      <div>
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
         <TextField
           label="La_threshold_up"
           name="TL_CONDITION_UP_VALUE"
@@ -126,11 +118,7 @@ export function SettingsView({
           value={settings.TR_CONDITION_MIN_VALUE}
           onChange={handleParametersChange}
         />
-<<<<<<< HEAD
       </div> */}
-=======
-      </div>
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
       <div>
         <TextField
           label="Time_available_max (msec)"
@@ -151,11 +139,7 @@ export function SettingsView({
           onChange={handleParametersChange}
         />
       </div>
-<<<<<<< HEAD
       {/* <div>
-=======
-      <div>
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
         <TextField
           label="Limit_t2ra (msec)"
           name="TR_CONDITION_MAX_TIME"
@@ -174,11 +158,7 @@ export function SettingsView({
           value={settings.TL_CONDITION_MAX_TIME}
           onChange={handleParametersChange}
         />
-<<<<<<< HEAD
       </div> */}
-=======
-      </div>
->>>>>>> bee65443f22c2f51af7e08a2cf0dc54cdcd8767a
       <div>
         <TextField
           label="User_Parameter"
