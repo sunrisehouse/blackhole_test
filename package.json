@@ -1,7 +1,7 @@
 {
-  "name": "blackhole",
+  "name": "blackhole_test",
   "version": "0.1.0",
-  "homepage": "/blackhole/build",
+  "homepage": "/blackhole_test/build",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.13.3",
