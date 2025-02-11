@@ -144,7 +144,7 @@ export class EventDetector {
             this.resetFlags(t, `Resetting flagTs1 and flagTs2 after 2000ms timeout.`);
           } 
           else if (timeSinceFlagTs2 >= this.TS2_CONDITION_MIN_TIME && timeSinceFlagTs2 <= this.TS2_CONDITION_MAX_TIME) {
-            if (a >= this.TR_CONDITION_MIN_VALUE) {
+            if (a >= this.TS2_CONDITION_MIN_VALUE) {
               this.flagTs2 = true;
               this.ts2Event.time = t;
               this.ts2Event.value = a;
